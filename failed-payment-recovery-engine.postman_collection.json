@@ -1,0 +1,141 @@
+{
+  "info": {
+    "name": "Failed Payment Recovery Engine",
+    "description": "Postman collection for the Kotlin Spring Boot failed transaction recovery API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Seed transactions",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/transactions/seed",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "transactions",
+            "seed"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create failed transaction",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"transactionId\": \"manual-txn-001\",\n  \"amount\": 125500.00,\n  \"currency\": \"ARS\",\n  \"country\": \"argentina\",\n  \"paymentMethod\": \"visa_credit\",\n  \"failureReason\": \"insufficient_funds\",\n  \"customerId\": \"repeat-customer-001\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/transactions/failed",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "transactions",
+            "failed"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get recovery candidates",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/transactions/recovery-candidates",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "transactions",
+            "recovery-candidates"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get recovery candidates with filters",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/transactions/recovery-candidates?minAmount=100&maxAgeHours=72&country=chile&minScore=60&page=0&size=10",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "transactions",
+            "recovery-candidates"
+          ],
+          "query": [
+            {
+              "key": "minAmount",
+              "value": "100"
+            },
+            {
+              "key": "maxAgeHours",
+              "value": "72"
+            },
+            {
+              "key": "country",
+              "value": "chile"
+            },
+            {
+              "key": "minScore",
+              "value": "60"
+            },
+            {
+              "key": "page",
+              "value": "0"
+            },
+            {
+              "key": "size",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get insights",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/transactions/insights",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "transactions",
+            "insights"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

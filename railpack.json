@@ -1,0 +1,9 @@
+{
+  "$schema": "https://schema.railpack.com",
+  "packages": {
+    "java": "17"
+  },
+  "deploy": {
+    "startCommand": "java -jar build/libs/failed-payment-recovery-engine-0.0.1-SNAPSHOT.jar"
+  }
+}
