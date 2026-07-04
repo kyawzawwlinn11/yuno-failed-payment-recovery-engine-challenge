@@ -2,6 +2,12 @@
 
 Backend prototype for VentaLibre's failed payment recovery workflow. The service ingests failed transactions, classifies the failure, calculates a recoverability score, exposes prioritized retry candidates, and returns aggregate recovery insights.
 
+Deployed API:
+
+```text
+https://yuno-failed-payment-recovery-engine-challenge-production.up.railway.app
+```
+
 ## Tech Stack
 
 - Kotlin
@@ -229,7 +235,13 @@ Import:
 failed-payment-recovery-engine.postman_collection.json
 ```
 
-The collection uses:
+The collection is preconfigured to use the deployed Railway instance:
+
+```text
+baseUrl = https://yuno-failed-payment-recovery-engine-challenge-production.up.railway.app
+```
+
+For local testing, switch the collection variable back to:
 
 ```text
 baseUrl = http://localhost:8080
