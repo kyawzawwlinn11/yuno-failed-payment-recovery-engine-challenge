@@ -59,6 +59,7 @@ This clears existing in-memory data and generates 300 failed transactions across
 ## API Endpoints
 
 ```text
+GET  /health
 POST /transactions/failed
 GET  /transactions/recovery-candidates
 GET  /transactions/insights
@@ -66,6 +67,12 @@ POST /transactions/seed
 ```
 
 ## Example Requests
+
+Health check:
+
+```bash
+curl https://yuno-failed-payment-recovery-engine-challenge-production.up.railway.app/health
+```
 
 Create a failed transaction:
 
